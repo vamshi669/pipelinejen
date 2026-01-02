@@ -1,12 +1,13 @@
 pipeline {
-    agent {
-        label 'dev'
+    agent any
+    environment {
+        NAME = 'VAM'
     }
 
     stages {
         stage('BUILD') {
             steps {
-                echo 'This is Build stage'
+                echo "$NAME"
                 sh '''
                     sleep 5
                     echo "Build completed successfully"
