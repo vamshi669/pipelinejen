@@ -31,12 +31,26 @@ pipeline {
             }
         }
         stage('DEPLOY') {
-            steps {
-                echo 'This is Deploy stage'
-                sh '''
-                    sleep 5
-                    echo "Deployment completed successfully"
-                '''
+            parallel {
+                stage('SERVER 1') {
+                    steps {
+                        echo 'This is Deploy to server1'
+                        sh 'sleep 5'
+                    }
+                }
+                stage('SERVER 2') {
+                    steps {
+                        echo 'This is Deploy to server2'
+                        sh 'sleep 5'
+                    }
+                }
+
+                stage('SERVER 3') {
+                    steps {
+                        echo 'This is Deploy to server3'
+                        sh 'sleep 5'
+                    }
+                }
             }
         }
     }
